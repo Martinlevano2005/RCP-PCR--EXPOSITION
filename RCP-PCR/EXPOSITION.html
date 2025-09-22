@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RCP y Paro Cardiorrespiratorio — Guía Completa</title>
+  <meta name="description" content="Guía extensiva de Reanimación Cardiopulmonar (RCP) y Paro Cardiorrespiratorio (PCR) — prevención, causas, signos, atención con 1 y 2 auxiliadores, diagramas y video de ejemplo." />
+  <style>
+    /* =========== Reset ligero =========== */
+    :root{
+      --bg: #0f1724;
+      --card: #0b1220;
+      --muted: #9aa4b2;
+      --accent: #ef6c00;
+      --accent-2: #00bcd4;
+      --glass: rgba(255,255,255,0.04);
+      --success: #16a34a;
+      --danger: #ef4444;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: linear-gradient(180deg,#071021 0%, #071622 60%);
+      color: #e6eef6;
+      line-height:1.45;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:24px;
+      display:flex;
+      justify-content:center;
+      font-size:16px;
+    }
+    .container{
+      width:100%;
+      max-width:1100px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.04);
+      padding:28px;
+      border-radius:14px;
+      box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+    }
+    header{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      margin-bottom:18px;
+    }
+    header h1{
+      margin:0;
+      font-size:20px;
+      letter-spacing:0.2px;
+    }
+    header p{margin:0;color:var(--muted);font-size:14px}
+    nav{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin:12px 0 18px 0;
+    }
+    .pill{
+      background:var(--glass);
+      padding:8px 12px;
+      border-radius:999px;
+      color:var(--muted);
+      font-size:14px;
+      cursor:pointer;
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    .pill:focus{outline:3px solid rgba(0,188,212,0.16)}
+    main{display:grid;grid-template-columns: 1fr 360px; gap:20px;}
+    @media (max-width:980px){ main{grid-template-columns:1fr} .aside {order:2}}
+    article{
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
+      padding:18px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    .aside{
+      position:sticky;
+      top:28px;
+      align-self:start;
+    }
+    h2{margin-top:2px}
+    h3{margin-bottom:6px;color:#cfe9ff}
+    .muted{color:var(--muted)}
+    section{margin:14px 0;padding-bottom:6px;border-bottom:1px dashed rgba(255,255,255,0.02)}
+    .lead{font-size:15px;color:#e6f2ff}
+    /* Cards for protocols */
+    .protocol{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top:10px;
+    }
+    @media (max-width:700px){ .protocol{grid-template-columns:1fr} }
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.006));
+      padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);
+    }
+    pre.diagram{
+      background:rgba(255,255,255,0.02);
+      padding:10px;border-radius:8px;overflow:auto;font-family:monospace;
+      color:#c9f0ff;font-size:13px;
+    }
+    /* Buttons */
+    .btn{
+      display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border-radius:8px;background:linear-gradient(90deg,var(--accent),#ff8a00);
+      color:black;font-weight:600;border:none;cursor:pointer;
+    }
+    .btn--ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)}
+    .btn:focus{outline:3px solid rgba(239,108,0,0.14)}
+    /* SVG helper */
+    .svg-box{background:rgba(255,255,255,0.01);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
+    /* step list */
+    ol.steps{counter-reset:step; padding-left:18px; margin:8px 0;}
+    ol.steps li{
+      margin:8px 0;padding-left:12px;position:relative;
+    }
+    ol.steps li::before{
+      counter-increment:step;
+      content:counter(step);
+      position:absolute;left:-32px;top:0;background:var(--accent);color:#07070a;width:26px;height:26px;border-radius:50%;display:inline-grid;place-items:center;font-weight:700;
+    }
+    .badge{display:inline-flex;padding:4px 8px;border-radius:999px;background:rgba(255,255,255,0.02);color:var(--muted);font-size:13px}
+    footer{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-top:18px;color:var(--muted);font-size:13px}
+    /* small helper panels */
+    .panel{background:linear-gradient(180deg, rgba(0,0,0,0.22), rgba(255,255,255,0.01));padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
+    /* print */
+    @media print{
+      body{background:white;color:black} .container{box-shadow:none;border:none}
+      .btn, nav, header p{display:none}
+    }
+    /* animations - pulse for active chest compressions */
+    .pulse{
+      animation: pulse 1s infinite;
+    }
+    @keyframes pulse{
+      0%{transform:scale(1)}
+      50%{transform:scale(0.98)}
+      100%{transform:scale(1)}
+    }
+    /* accessibility: focus styles for interactive blocks */
+    .card:focus-within{outline:3px solid rgba(0,188,212,0.08)}
+    /* little legend */
+    .legend{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .legend .item{display:flex;gap:8px;align-items:center;color:var(--muted)}
+    .dot{width:12px;height:12px;border-radius:3px}
+  </style>
+</head>
+<body>
+  <div class="container" role="main">
+    <header>
+      <svg width="44" height="44" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <rect rx="6" width="24" height="24" fill="#07283a"></rect>
+        <path d="M12 3c1.1 0 2 .9 2 2v6h2l-4 7-4-7h2V5c0-1.1.9-2 2-2z" fill="#ffb86b"/>
+      </svg>
+      <div>
+        <h1>PARO CARDIORRESPIRATORIO & REANIMACIÓN CARDIO PULMONAR </h1>
+        <p class="muted"> PCR & RCP </p>
+      </div>
+    </header>
+    <main>
+      <article aria-labelledby="main-title">
+        <center><h2 id="main-title">CONTENIDO</h2></center>
+
+        <section id="definicion" aria-labelledby="h-def">
+          <h3 id="h-def">1. Definición</h3>
+          <p class="lead">El <strong>paro cardiorrespiratorio (PCR)</strong> es la detención súbita e inesperada de la función respiratoria y/o cardíaca. La <strong>RCP</strong> (reanimación cardiopulmonar) engloba maniobras para restablecer la ventilación y la perfusión hasta que se provea soporte avanzado.</p>
+        </section>
+
+        <section id="causas" aria-labelledby="h-causas">
+          <h3 id="h-causas">2. Causas frecuentes</h3>
+          <ul>
+            <li><strong>Cardíacas:</strong> infarto agudo de miocardio, arritmias (fibrilación ventricular, taquicardia ventricular sin pulso), insuficiencia cardíaca severa.</li>
+            <li><strong>Respiratorias:</strong> asfixia por vía aérea, broncoaspiración, ahogamiento, obstrucción por cuerpo extraño.</li>
+            <li><strong>Metabólicas:</strong> desequilibrios electrolíticos (K+, Ca2+), hipoglucemia extrema).</li>
+            <li><strong>Trauma:</strong> lesiones torácicas graves, hemorragias masivas.</li>
+            <li><strong>Otras:</strong> intoxicaciones, descargas eléctricas, hipotermia severa.</li>
+          </ul>
+        </section>
+
+        <section id="manifestaciones" aria-labelledby="h-manif">
+          <h3 id="h-manif">3. Manifestación clínica</h3>
+          <p class="muted">Signos que indican PCR:</p>
+          <ol class="steps" aria-label="Pasos para reconocer un PCR">
+            <li>Pérdida súbita de conciencia (no responde a estímulos verbales o físicos).</li>
+            <li>Ausencia o marcadísima alteración de la respiración (respiración agónica).</li>
+            <li>Ausencia de pulso central (carotídeo/femoral) — comprobar ≤10 a segundos.</li>
+            <li>Coloración: palidez seguida de cianosis; pupilas dilatadas en fases tardías.</li>
+          </ol>
+        </section>
+
+        <section id="prevencion" aria-labelledby="h-prev">
+          <h3 id="h-prev">4. Prevención</h3>
+          <div class="protocol">
+            <div class="card" tabindex="0">
+              <h4>Prevención individual</h4>
+              <ul>
+                <li>Controlar factores de riesgo: diabetes, dislipidemia, tabaquismo.</li>
+                <li>Actividad física regular y dieta balanceada.</li>
+                <li>Evitar tóxicos y sustancias que predisponen a arritmias.</li>
+                <li>Uso responsable de medicamentos y controles periódicos.</li>
+              </ul>
+            </div>
+            <div class="card" tabindex="0">
+              <h4>Prevención comunitaria</h4>
+              <ul>
+                <li>Capacitación comunitaria en RCP básica y uso de DEA.</li>
+                <li>Instalación de DEA en sitios públicos con alta afluencia.</li>
+                <li>Campañas educativas: identificar signos y activar la cadena de supervivencia.</li>
+                <b>DEA (Desfibrilador Externo Automático).</b>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="cadena" aria-labelledby="h-cadena">
+          <h3 id="h-cadena">5. Cadena de supervivencia</h3>
+          <p class="muted">Secuencia clave:</p>
+          <pre class="diagram" aria-hidden="true">
+[1] Reconocer emergencia
+  ↓
+[2] Llamar a emergencias ( 911 / 112)
+  ↓
+[3] RCP precoz (compresiones + ventilaciones)
+  ↓
+[4] Desfibrilación precoz (si corresponde)
+  ↓
+[5] Soporte vital avanzado (SVAT/EMS)
+
+<li><b>SVAT (Soporte Vital Avanzado en Trauma)</b>
+    <li>EMS (Emergency Medical Services)
+          </pre>
+        </section>
+
+        <section id="1aux" aria-labelledby="h-1aux">
+          <h3 id="h-1aux">6. Atención con 1 auxiliador (Paso a paso)</h3>
+          <div class="card">
+            <h4 class="muted">PASOS</h4>
+            <ol class="steps" aria-label="Pasos para RCP un solo reanimador">
+              <li>Verificar seguridad de la escena.</li>
+              <li>Evaluar respuesta (sacudir hombros, preguntar en voz alta "¿me oye?").</li>
+              <li>Si no responde, pedir a alguien que llame a emergencias o hacerlo usted mismo si está solo.</li>
+              <li>Comprobar respiración y pulso (no más de 10 segundos).</li>
+              <li>Si no respira normalmente o no hay pulso → iniciar RCP: compresiones torácicas 30 y 2 ventilaciones.</li>
+              <li>Compresiones: centro del tórax, profundidad 5–6 cm, frecuencia 100–120/min.</li>
+              <li>Continuar hasta que llegue ayuda o el paciente recupere signos vitales.</li>
+            </ol>
+          </div>
+
+          <div style="margin-top:12px;" class="svg-box" aria-hidden="false">
+        
+            <!-- SVG: manos y punto de compresion (simplificado) -->
+              <center></defs><img src="Centro del tórax — mitad inferior del esternón.jpeg">
+              <rect x="12" y="12" rx="16" width="576" height="276" fill="rgba(255,255,255,0.01)"></rect>
+            </svg>
+          </div>
+        </section>
+
+        <section id="2aux" aria-labelledby="h-2aux">
+          <h3 id="h-2aux">7. Atención con 2 auxiliadores (Coordinación)</h3>
+          <div class="card" tabindex="0">
+            <h4>Roles y coordinación</h4>
+            <ul>
+              <li><strong>Auxiliador A:</strong> Compresiones torácicas continuas (30 compresiones).</li>
+              <li><strong>Auxiliador B:</strong> Vía aérea y ventilaciones (2 ventilaciones);si se dispone: bolsa, válvula, mascarilla o tubo de guedel + bolsa.</li>
+              <li>Cambio de roles cada 2 minutos (aprox. 5 ciclos) para evitar fatiga.</li>
+              <li>Si hay DEA disponible, interrumpir brevemente para análisis y descarga si indica.</li>
+            </ul>
+          </div>
+
+          <div style="margin-top:12px" class="svg-box" aria-hidden="false">
+            <!-- SVG: flujo de trabajo 2 reanimadores -->
+            <svg viewBox="0 0 600 220" width="100%" height="200" role="img" aria-label="Flujo coordinación 2 auxiliadores">
+              <defs>
+                <marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                  <path d="M0,0 L6,3 L0,6 Z" fill="#9ad6e6"/>
+                </marker>
+              </defs>
+              <rect x="8" y="8" rx="12" width="584" height="204" fill="rgba(255,255,255,0.01)"></rect>
+              <!-- boxes -->
+              <g font-family="sans-serif" font-size="13">
+                <rect x="30" y="24" width="220" height="56" rx="8" fill="#052735" stroke="#075b6f"></rect>
+                <text x="40" y="46" fill="#cfe9ff" font-weight="700">Aux. 1 — Compresiones</text>
+                <text x="40" y="64" fill="#9fcbe0">30 compresiones → mantener ritmo</text>
+
+                <rect x="350" y="24" width="220" height="56" rx="8" fill="#052735" stroke="#075b6f"></rect>
+                <text x="360" y="46" fill="#cfe9ff" font-weight="700">Aux. 2 — Vía aérea</text>
+                <text x="360" y="64" fill="#9fcbe0">2 ventilaciones con bolsa-válvula</text>
+
+                <rect x="190" y="110" width="220" height="56" rx="8" fill="#052735" stroke="#075b6f"></rect>
+                <text x="200" y="132" fill="#cfe9ff" font-weight="700">Coordinación</text>
+                <text x="200" y="150" fill="#9fcbe0">Cambio cada 2 minutos; usar DEA si disponible</text>
+
+                <!-- arrows -->
+                <path d="M250 80 L360 110" stroke="#9ad6e6" stroke-width="2" fill="none" marker-end="url(#arrow)"></path>
+                <path d="M350 80 L240 110" stroke="#9ad6e6" stroke-width="2" fill="none" marker-end="url(#arrow)"></path>
+              </g>
+            </svg>
+          </div>
+        </section>
+
+        <section id="medidas" aria-labelledby="h-medidas">
+          <h3 id="h-medidas">8. Medidas complementarias y uso de DEA</h3>
+          <div class="card">
+            <h4 class="muted">Desfibrilador Externo Automático (DEA)</h4>
+            <ul>
+              <li>En cuanto esté disponible: encender DEA y seguir instrucciones habladas.</li>
+              <li>Retirar ropa del tórax y pegar los parches: uno por encima del esternón (derecha) y otro debajo de la axila izquierda.</li>
+              <li>El DEA analizará ritmo; si indica choque, asegúrese de que nadie toque al paciente antes de descargar.</li>
+              <li>Reanudar RCP inmediatamente tras la descarga o si no se indica descarga.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="cuidados" aria-labelledby="h-cuidados">
+          <h3 id="h-cuidados">9. Consideraciones adicionales (seguridad y ética)</h3>
+          <ul>
+            <li>Si la escena no es segura, no se acerque hasta que lo sea.</li>
+            <li>En caso de sospecha de traumatismo cervical: minimizar movimientos del cuello al abrir la vía aérea; si hay dudas use la maniobra mandíbula-mentón con cuidado.</li>
+            <li>Consentimiento y protocolos locales: si la persona tiene DNI o documento de rechazo de reanimación, seguir la normativa y protocolos locales y legales.</li>
+            <li>Registrar tiempos (inicio de RCP, shocks, cambios de reanimador) para la cadena de custodia clínica.</li>
+          </ul>
+        </section>
+        <section id="video" aria-labelledby="h-video">
+          <h3 id="h-video">10. Video de ejemplo</h3>
+          <div class="panel" style="margin-top:10px">
+            <!-- Ejemplo: reemplaza el enlace -->
+            <div styl">
+                <video id="miVideo" width="100%" height="auto" controls autoplay muted loop>
+            <source src="reanimación-cardiopulmonar-en-personas-adultas-maniobra-manual-básica-sin-desa---4-rcp.mp4" type="video/mp4">
+            Tu navegador no soporta la etiqueta de video.
+            </video>
+
+            <button onclick="activarSonido()">🔊 Activar sonido</button>
+
+            <script>
+            function activarSonido() {
+                const video = document.getElementById("miVideo");
+                video.muted = false;   // Quitar silencio
+                video.play();          // Reproducir con sonido
+            }
+            </script>
+
+
+              <video src="" 
+                title="Ejemplo RCP" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen style="position:absolute;left:0;top:0;width:100%;height:100%"></iframe>
+        </section>
+
+        <footer>
+          <div class="muted">Última revisión: <strong>2025</strong> — RCP & PCR </div>
+          <div class="muted">Create: Levano Martin</div>
+        </footer>
+      </article>
+
+      <aside class="aside" aria-label="Panel lateral">
+        <div class="panel" style="margin-bottom:12px;">
+          <h4>Resumen rápido</h4>
+          <p class="muted"><strong>Reconocer → Llamar → RCP → DEA → Soporte Avanzado</strong></p>
+          <div class="legend" aria-hidden="true" style="margin-top:8px">
+            <div class="item"><span class="dot" style="background:var(--accent)"></span> Compresiones</div>
+            <div class="item"><span class="dot" style="background:var(--accent-2)"></span> Ventilaciones</div>
+            <div class="item"><span class="dot" style="background:var(--danger)"></span> Signos críticos</div>
+          </div>
+        </div>
+        <div class="panel">
+          <h4>Contacto de emergencia<br><span class="muted">Ejemplo</span></h4>
+          <p style="font-weight:700">911 / 112</p>
+          <p class="muted">Proporciona ubicación exacta y tiempo de inicio de la RCP</p>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script>
+    // ======= Script para interactividad mínima y accesibilidad =======
+    (function(){
+      // Navegación por botones pill
+      document.querySelectorAll('.pill').forEach(btn=>{
+        btn.addEventListener('click', ()=> {
+          const sel = btn.getAttribute('data-scroll');
+          const el = document.querySelector(sel);
+          if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+        });
+      });
+
+      // Imprimir
+      document.getElementById('printBtn').addEventListener('click', ()=>{
+        window.print();
+      });
+
+      // Download simple SVG (captura del primer SVG en la página)
+      document.getElementById('downloadSVG').addEventListener('click', ()=>{
+        const svg = document.querySelector('svg');
+        if(!svg) return alert('No se encontró un SVG para descargar.');
+        const clone = svg.cloneNode(true);
+        const serializer = new XMLSerializer();
+        const source = '<?xml version="1.0" standalone="no"?>\\n' + serializer.serializeToString(clone);
+        const url = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(source);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'esquema-rcp.svg';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      });
+
+      // Keyboard: permitir focus en .card y activar detalles con Enter
+      document.querySelectorAll('.card').forEach(card=>{
+        card.setAttribute('tabindex','0');
+        card.addEventListener('keydown', e=>{
+          if(e.key === 'Enter'){ card.classList.toggle('active'); }
+        });
+      });
+
+      // Mejor: permitir reemplazar video mediante prompt (simple)
+      // Nota: se usa prompt para reemplazo rápido. No almacena nada.
+      const embed = document.getElementById('embedVideo');
+      embed.setAttribute('title','Video de ejemplo (haz clic para reemplazar)');
+
+      embed.addEventListener('click', ()=>{
+        const url = prompt('Pega la URL embebible de YouTube (ej. https://www.youtube.com/embed/ID):', embed.src);
+        if(url) embed.src = url;
+      });
+
+      // Añadir listeners a las compresiones (simulación visual)
+      // buscamos elementos con clase pulse y les permitimos start/stop click
+      document.querySelectorAll('.pulse').forEach(el=>{
+        el.style.cursor = 'pointer';
+        el.setAttribute('title','Haz click para pausar/reanudar la animación de compresión');
+        el.addEventListener('click', ()=> {
+          if(el.style.animationPlayState === 'paused') el.style.animationPlayState = 'running';
+          else el.style.animationPlayState = 'running'; // keep running by default
+          // simple toggle: remove or add class
+          if(el.classList.contains('pulse')) el.classList.remove('pulse');
+          else el.classList.add('pulse');
+        });
+      });
+
+      // mejora: detectar preferencia de reducción de movimiento
+      const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+      if(mq.matches) {
+        document.querySelectorAll('.pulse').forEach(e=>e.classList.remove('pulse'));
+      }
+    })();
+  </script>
+</body>
+</html>
